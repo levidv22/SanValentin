@@ -1,27 +1,108 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi San Valentín 💖</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi San Valentín 💖</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+                color: white;
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+                padding: 20px;
+            }
 
-    <div class="container d-flex flex-column justify-content-center align-items-center text-center vh-100">
-        <h1 class="title animate-fade">Ya Llega San Valentín, mi amor 💕</h1>
-        <p class="subtitle animate-fade">Eres lo mejor que me ha pasado y quiero preguntarte algo especial...</p>
-        
-        <button class="btn btn-danger btn-lg mt-3 animate-bounce" onclick="mostrarSorpresa()">💌 Toca aquí 💌</button>
+            .title {
+                font-size: 2.2rem;
+                font-weight: bold;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            }
 
-        <div id="sorpresa" class="sorpresa text-center">
-            <p class="question">¿Quieres ser mi San Valentín? 💝</p>
-            <a href="confirmacion.jsp" class="btn btn-success btn-lg">Sí</a>
-            <a href="confirmacion.jsp" class="btn btn-warning btn-lg">Por supuesto</a>
+            .subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+
+            .animate-bounce {
+                animation: bounce 1s infinite;
+            }
+
+            @keyframes bounce {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-5px);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container d-flex flex-column justify-content-center align-items-center text-center vh-100">
+            <h1 class="title">Ya Llega San Valentín, mi amor 💕</h1>
+            <p class="subtitle">Eres lo mejor que me ha pasado y quiero preguntarte algo especial...</p>
+
+            <button class="btn btn-danger btn-lg mt-3 animate-bounce" onclick="mostrarModal()">💌 Toca aquí 💌</button>
         </div>
-    </div>
 
-    <script src="js/script.js"></script>
-</body>
+        <!-- Modal de Confirmación -->
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-black" id="modalLabel">¿Quieres ser mi San Valentín? 💝</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p class="text-black">¡Espero que digas que sí! 🥰</p>
+                        <img src="https://i.pinimg.com/236x/cb/16/3e/cb163e5cfeb72319a865d791c90fd715.jpg" alt="Amor" class="img-fluid rounded shadow mt-2">
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-success" onclick="mostrarMensaje()">Sí</button>
+                        <button type="button" class="btn btn-danger" onclick="mostrarSegundoModal()">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de "No" -->
+        <div class="modal fade" id="modalNo" tabindex="-1" aria-labelledby="modalNoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-black" id="modalNoLabel">¡Eso no es una opción! 😡💔</h5>
+                        
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p class="text-black">Inténtalo de nuevo... 😏</p>
+                        <img src="https://ugc.production.linktr.ee/7343d74e-ed4c-4f9a-abde-9bf5761cbb81_1721240965204.jpeg?io=true&size=avatar-v3_0" alt="Enojo" class="img-fluid rounded shadow mt-2">
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function mostrarModal() {
+                let modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+                modal.show();
+            }
+
+            function mostrarMensaje() {
+                alert("¡Me hiciste la persona más feliz del mundo! 💖");
+            }
+
+            function mostrarSegundoModal() {
+                let modalNo = new bootstrap.Modal(document.getElementById('modalNo'));
+                modalNo.show();
+            }
+        </script>
+    </body>
 </html>

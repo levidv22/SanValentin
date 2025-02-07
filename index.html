@@ -61,7 +61,27 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
                         <button type="button" class="btn btn-success" onclick="mostrarMensaje()">Sí</button>
-                        <button type="button" class="btn btn-warning" onclick="mostrarMensaje()">Por supuesto</button>
+                        <button type="button" class="btn btn-danger" onclick="mostrarSegundoModal()">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de "No" -->
+        <div class="modal fade" id="modalNo" tabindex="-1" aria-labelledby="modalNoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-black" id="modalNoLabel">¡Eso no es una opción! 😡💔</h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p class="text-black">Inténtalo de nuevo... 😏</p>
+                        <img src="https://ugc.production.linktr.ee/7343d74e-ed4c-4f9a-abde-9bf5761cbb81_1721240965204.jpeg?io=true&size=avatar-v3_0" alt="Enojo" class="img-fluid rounded shadow mt-2">
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Volver</button>
                     </div>
                 </div>
             </div>
@@ -77,6 +97,11 @@
 
                             function mostrarMensaje() {
                                 alert("¡Me hiciste la persona más feliz del mundo! 💖");
+                            }
+
+                            function mostrarSegundoModal() {
+                                let modalNo = new bootstrap.Modal(document.getElementById('modalNo'));
+                                modalNo.show();
                             }
         </script>
     </body>
